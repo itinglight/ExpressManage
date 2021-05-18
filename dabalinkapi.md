@@ -101,3 +101,29 @@ server:
   port: 8081
 ```
 
+# 5.18
+
+后端
+
+```java
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/student
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: create
+        dialect=org:
+          hibernate:
+            dialect:
+              MySQL5InnoDBDialect:
+    show-sql: true
+
+server:
+  port: 8081
+```
+
