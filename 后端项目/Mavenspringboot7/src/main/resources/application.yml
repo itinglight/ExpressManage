@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/express
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+        hbm2ddl:
+          auto: create
+        dialect=org:
+          hibernate:
+            dialect:
+              MySQL5InnoDBDialect:
+
+
+
+  mvc:
+
+
+server:
+  port: 8081
+
