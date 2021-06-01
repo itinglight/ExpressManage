@@ -95,3 +95,21 @@ export default {
 </style>
 ```
 
+## 技术栈
+
+### 前端
+
+- HTML
+- CSS
+- JavaScript
+- Vue.js
+- axios
+
+### 后端
+
+- java
+- javaspringBoot
+- javaJPA
+
+
+

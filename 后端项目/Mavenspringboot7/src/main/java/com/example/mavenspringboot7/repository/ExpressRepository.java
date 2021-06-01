@@ -9,9 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ExpressRepository extends JpaRepository<express_information,Integer>{
 
-    @Override
-    List<express_information> findAll();
 
-    @Override
-    <S extends express_information> S save(S s);
 }

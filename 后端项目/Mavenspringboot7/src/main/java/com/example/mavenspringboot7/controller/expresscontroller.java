@@ -4,10 +4,11 @@ package com.example.mavenspringboot7.controller;
 //import com.example.mavenspringboot7.entity.express;
 import com.example.mavenspringboot7.entity.express_information;
 import com.example.mavenspringboot7.repository.ExpressRepository;
-import com.sun.tools.javac.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
+import java.util.List;
 
 
 @RestController
@@ -48,9 +49,11 @@ public class expresscontroller {
     @GetMapping("/express/findall")
     public List<express_information> findAll(){
         System.out.println("findall");
-
+        System.out.println(repository.findAll());
         return repository.findAll();
     }
+
+
 
 
 }

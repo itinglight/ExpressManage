@@ -10,7 +10,7 @@ spring:
       hibernate:
         format-sql: true
         hbm2ddl:
-          auto: create
+          auto: update
         dialect=org:
           hibernate:
             dialect:
