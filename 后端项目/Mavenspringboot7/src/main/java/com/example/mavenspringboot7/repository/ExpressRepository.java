@@ -9,5 +9,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ExpressRepository extends JpaRepository<express_information,Integer>{
 
-
 }

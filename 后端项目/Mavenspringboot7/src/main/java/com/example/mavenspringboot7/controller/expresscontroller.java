@@ -1,13 +1,15 @@
 package com.example.mavenspringboot7.controller;
 
 
-//import com.example.mavenspringboot7.entity.express;
+
 import com.example.mavenspringboot7.entity.express_information;
+import com.example.mavenspringboot7.entity.User;
 import com.example.mavenspringboot7.repository.ExpressRepository;
+import com.example.mavenspringboot7.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
+import java.util.Date;
 import java.util.List;
 
 
@@ -15,11 +17,16 @@ import java.util.List;
 @ResponseBody
 public class expresscontroller {
 
-    @Autowired
-    private  ExpressRepository repository;
+    private final ExpressRepository repository;
+    private final UserRepository userRepository;
+
+    public expresscontroller(ExpressRepository repository, UserRepository userRepository) {
+        this.repository = repository;
+        this.userRepository = userRepository;
+    }
 
     @PostMapping("/addexpress")
-    public String addUser(@RequestBody express_information express)  {
+    public String addexpress(@RequestBody express_information express)  {
 
         System.out.println(express);
         System.out.println(express.getClass());
@@ -27,7 +34,7 @@ public class expresscontroller {
         System.out.println("请求来源于快递添加页面！！！");
 //        @RequestBody express_information express
 //        System.out.println(express);
-        express_information express2=new express_information();
+//        express_information express2=new express_information();
 
         express_information result =repository.save(express);
         if(result != null){
@@ -48,11 +55,36 @@ public class expresscontroller {
     }
     @GetMapping("/express/findall")
     public List<express_information> findAll(){
-        System.out.println("findall");
+        Date time =new Date();
+
+        System.out.println("findall"+ time.getTime());
         System.out.println(repository.findAll());
         return repository.findAll();
     }
 
+//    @GetMapping("/express/:phone/findall")
+//    public List<express_information>ufindAll(){
+//
+//        return List<express_information>;
+//    }
+
+        @GetMapping("/user/findall")
+        public List<User> findalluser(){
+        System.out.println("查询全部用户");
+        return userRepository.findAll();
+        }
+
+        @GetMapping("/user/add")
+        public String adduser(@RequestBody User user){
+
+        System.out.println(user);
+        User result = userRepository.save(user);
+            if(result != null){
+                return "success";
+            }else {
+                return "error";
+            }
+        }
 
 
 
