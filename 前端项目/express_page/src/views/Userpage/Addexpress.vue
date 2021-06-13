@@ -135,14 +135,6 @@ export default {
 
     },
     submitForm(formName) {
-      // this.$refs[formName].validate((valid) => {
-      //   if (valid) {
-      //     alert('submit!');
-      //   } else {
-      //     console.log('error submit!!');
-      //     return false;
-      //   }
-      // });
       let express_number=10001;
       const expressinformation = {
 
@@ -203,6 +195,7 @@ export default {
           })
           .catch(function (error) {
             console.log(error);
+            alert("后台出错！！！")
           });
 
 

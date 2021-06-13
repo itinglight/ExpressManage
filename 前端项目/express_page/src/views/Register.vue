@@ -6,9 +6,9 @@
 
       <el-input v-model="username" placeholder="请输入姓名"></el-input>
       <el-input v-model="userphone" placeholder="请输入手机号码"></el-input>
-      <el-input v-if="radio1==2" v-model="input0" placeholder="请选择服务地址"></el-input>
-      <el-input v-model="input2" show-password placeholder="请设置密码"></el-input>
-      <el-input v-model="input3" show-password placeholder="请确认密码"></el-input>
+      <el-input v-if="radio1==2" v-model="address" placeholder="请选择服务地址"></el-input>
+      <el-input v-model="password" show-password placeholder="请设置密码"></el-input>
+      <el-input v-model="passwords" show-password placeholder="请确认密码"></el-input>
       <el-button  type="primary" @click="commit()">注册账号</el-button>
       <router-link  to="/"><el-button type="primary">回到首页</el-button></router-link>
     </div>
@@ -21,23 +21,33 @@
 export default {
   data() {
     return {
-      input0:'',
-      username:'',
-      radio1: '1',
-      userphone: '',
-      input2: '',
-      input3: '',
-      input4: ''
+      address:'',//服务地址
+      username:'',//用户名
+      radio1: '1',//用户类型
+      userphone: '',//手机号码
+      password: '',
+      passwords: ''
     }
   },
   methods: {
     commit(){
 
-      if(this.radio1=1){
+      if(this.radio1=1){ //普通用户
 
+        axios.post('http://localhost:8081/user/add', {
+          userid:"",
+          username:this.username,
+          phonenumber:this.userphone,
+          password:this.password,
 
-        alert("注册成功成功");
-        this.$router.push("/login")
+        }).then(function (response) {
+              console.log(response);
+              alert("注册成功");
+              this.$router.push("/login")
+            }).catch(function (error) {
+              console.log(error);
+            });
+
 
       }else if(this.radio1=2){
 

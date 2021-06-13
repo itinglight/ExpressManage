@@ -141,4 +141,22 @@ public class express_information {
     public void setExpress_desc(String express_desc) {
         this.express_desc = express_desc;
     }
+
+    @Override
+    public String toString() {
+        return "express_information{" +
+                "express_number=" + express_number +
+                ", to_send_name='" + to_send_name + '\'' +
+                ", to_send_phone='" + to_send_phone + '\'' +
+                ", to_send_address='" + to_send_address + '\'' +
+                ", to_send_detailed_address='" + to_send_detailed_address + '\'' +
+                ", to_receive_name='" + to_receive_name + '\'' +
+                ", to_receive_phone='" + to_receive_phone + '\'' +
+                ", to_receive_address='" + to_receive_address + '\'' +
+                ", to_receive_detailed_address='" + to_receive_detailed_address + '\'' +
+                ", express_static='" + express_static + '\'' +
+                ", price=" + price +
+                ", express_desc='" + express_desc + '\'' +
+                '}';
+    }
 }

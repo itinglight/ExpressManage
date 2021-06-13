@@ -44,30 +44,46 @@ export default {
       username:'',
       password:'',
       radio1: '1',
+
     }
 
   },
   methods: {
     commit(){
-
+      let loginstatic=false;
+      let _this=this;
       if(this.radio1==1){
 
-        if(this.username=='itinglight' && this.password=="123"){
-          this.$message({
-            message: '登录成功',
-            type: 'success'
-          });
-          // alert("登录成功");
-          this.$router.push('/user')
+        axios.post('http://localhost:8081/user/login', {
+            phonenumber:this.username,
+            password:this.password
 
-        }else{
-          this.$message({
-            message: '请检查账号或密码是否正确',
-            type: 'warning'
-          });
-        }
+        }).then(function (response) {
+              console.log(response);
+              console.log(response.data);
+              if(response.data=="success"){
+                _this.$message({
+                  message: '登录成功',
+                  type: 'success'
+                });
+                // alert("登录成功");
+                _this.$router.push('/user')
 
-      }else if(this.radio1==2){
+              }else{
+                _this.$message({
+                  message: '请检查账号或密码是否正确',
+                  type: 'warning'
+                });
+              }
+
+            }).catch(function (error) {
+              console.log(error);
+            })
+
+        console.log(loginstatic)
+
+
+      }else if(this.radio1==2){//驿站管理
 
         this.$message({
           message: '登录成功',

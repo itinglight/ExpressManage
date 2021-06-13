@@ -1,17 +1,16 @@
 package com.example.mavenspringboot7.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
 
 
+    @Id
     @Column(name="userid")
     private String userid;
-    private String uname;
-    @Id
+    private String username;
+
     private String phonenumber;
     private String password;
 
@@ -26,12 +25,12 @@ public class User {
         this.userid = uid;
     }
 
-    public String getUname() {
-        return uname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUname(String uname) {
-        this.uname = uname;
+    public void setUsername(String uname) {
+        this.username = uname;
     }
 
     public String getPhonenumber() {
@@ -50,9 +49,9 @@ public class User {
         this.password = password;
     }
 
-    public User(String userid, String uname, String phonenumber, String password) {
+    public User(String userid, String username, String phonenumber, String password) {
         this.userid = userid;
-        this.uname = uname;
+        this.username = username;
         this.phonenumber = phonenumber;
         this.password = password;
     }

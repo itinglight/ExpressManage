@@ -6,6 +6,7 @@ import com.example.mavenspringboot7.entity.express_information;
 import com.example.mavenspringboot7.entity.User;
 import com.example.mavenspringboot7.repository.ExpressRepository;
 import com.example.mavenspringboot7.repository.UserRepository;
+import com.example.mavenspringboot7.service.Userservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ import java.util.List;
 @RestController
 @ResponseBody
 public class expresscontroller {
-
+    Userservice user =new Userservice();
     private final ExpressRepository repository;
     private final UserRepository userRepository;
 
@@ -26,65 +27,114 @@ public class expresscontroller {
     }
 
     @PostMapping("/addexpress")
-    public String addexpress(@RequestBody express_information express)  {
-
+    public void addexpress(@RequestBody express_information express)  { //添加快递
         System.out.println(express);
-        System.out.println(express.getClass());
 
         System.out.println("请求来源于快递添加页面！！！");
-//        @RequestBody express_information express
-//        System.out.println(express);
-//        express_information express2=new express_information();
 
-        express_information result =repository.save(express);
-        if(result != null){
-            return "success";
-        }else{
-            return "error";
-        }
-
-//        express_information ex =new express_information();
-//        express_information express3 = new express_information(ex.getExpress_number(),ex.getTo_send_name(),ex.getTo_send_phone(),ex.getTo_send_address(),ex.getTo_send_detailed_address(),ex.getTo_receive_name(),ex.getTo_receive_phone(),ex.getTo_receive_address(), ex.getTo_receive_detailed_address(),ex.getPrice(),ex.getExpress_desc());
-//        express3.setExpress_number(10001);
-//        express3.setTo_send_name("itinglight");
-//        express_information exp = repository.save(express3);   //有问题！！！ 要加resource注解
-//
-//       System.out.println(exp);
+        repository.save(express);
 
 
     }
     @GetMapping("/express/findall")
-    public List<express_information> findAll(){
+    public List<express_information> findAll(){ //查询所有快递
         Date time =new Date();
 
         System.out.println("findall"+ time.getTime());
         System.out.println(repository.findAll());
         return repository.findAll();
     }
+        @GetMapping("/express/sendphone")
+        public List<express_information> finalphone(@RequestBody String phone){
 
-//    @GetMapping("/express/:phone/findall")
-//    public List<express_information>ufindAll(){
-//
-//        return List<express_information>;
-//    }
+        System.out.println("查询用户手机号码为： "+phone+" 的寄件信息");
+        List<express_information> a= repository.findByto_send_phone(phone);
 
-        @GetMapping("/user/findall")
-        public List<User> findalluser(){
-        System.out.println("查询全部用户");
-        return userRepository.findAll();
+        return repository.findByto_send_phone(phone);
         }
 
-        @GetMapping("/user/add")
+        @PostMapping("express/updata")
+        public int updataexpress(@RequestBody String str){
+            Integer express_number = Integer.valueOf(str);
+            String express_static="以揽件";
+            return repository.updataexperess(express_static,express_number);
+
+        }
+            @PostMapping("express/delete")
+            public void deleteexpress(@RequestBody String str){
+                Integer express_number = Integer.valueOf(str);
+                repository.deleteexperess(express_number);
+
+
+            }
+
+        @PostMapping("/user/login")
+        public String finduser(@RequestBody User user){
+            System.out.println("user 登录");
+            System.out.println(user.getPhonenumber());
+            List<User> u=userRepository.findbyphone(user.getPhonenumber());
+            if(u.size()==0){
+                System.out.println("用户名无效");
+                return "用户名无效";
+            }else{
+                User user1=u.get(0);
+                System.out.println(user.getPassword());
+                System.out.println(user1.getPassword());
+                if(user.getPassword().equalsIgnoreCase(user1.getPassword())){
+                return "success";
+                }else {
+                    return "密码错误";
+                }
+            }
+
+        }
+        @PostMapping("/user/add")
         public String adduser(@RequestBody User user){
 
-        System.out.println(user);
-        User result = userRepository.save(user);
+            System.out.println(user);
+            User result = userRepository.save(user);
             if(result != null){
                 return "success";
             }else {
                 return "error";
             }
         }
+
+
+
+        @GetMapping("/user/findid")
+        public User findusers(@RequestBody String id){
+            List<User> u =userRepository.findbyphone(id);
+
+            System.out.println("查询单个用户");
+            User user =new User();
+            if (u.size()==0){
+                System.out.println("账号错误");
+
+            }else{
+                user =u.get(0);
+
+            }
+
+
+            return user;
+        }
+        @GetMapping("/user/findall")
+        public List<User> findalluser(){
+        System.out.println("查询全部用户");
+        return userRepository.findAll();
+        }
+
+
+
+            @GetMapping("/post/find")
+            public List<express_information> postfinal(@RequestBody String address){
+
+                System.out.println("查询寄件地址为： "+address+" 的快递信息");
+                List<express_information> a= repository.findByto_send_address(address);
+
+                return repository.findByto_send_address(address);
+            }
 
 
 
