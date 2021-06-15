@@ -8,7 +8,7 @@
       <el-input v-model="userphone" placeholder="请输入手机号码"></el-input>
       <el-input v-if="radio1==2" v-model="address" placeholder="请选择服务地址"></el-input>
       <el-input v-model="password" show-password placeholder="请设置密码"></el-input>
-      <el-input v-model="passwords" show-password placeholder="请确认密码"></el-input>
+<!--      <el-input v-model="passwords" show-password placeholder="请确认密码"></el-input>-->
       <el-button  type="primary" @click="commit()">注册账号</el-button>
       <router-link  to="/"><el-button type="primary">回到首页</el-button></router-link>
     </div>
@@ -18,7 +18,10 @@
 </template>
 <script>
 
+import store from "../store";
+
 export default {
+  store:store,
   data() {
     return {
       address:'',//服务地址
@@ -32,10 +35,11 @@ export default {
   methods: {
     commit(){
 
+      let _this=this;
       if(this.radio1=1){ //普通用户
 
         axios.post('http://localhost:8081/user/add', {
-          userid:"",
+          userid:"1001",
           username:this.username,
           phonenumber:this.userphone,
           password:this.password,
@@ -43,7 +47,7 @@ export default {
         }).then(function (response) {
               console.log(response);
               alert("注册成功");
-              this.$router.push("/login")
+              _this.$router.push("/login")
             }).catch(function (error) {
               console.log(error);
             });

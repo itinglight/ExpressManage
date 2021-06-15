@@ -7,11 +7,12 @@ public class User {
 
 
     @Id
-    @Column(name="userid")
+//    @Column(name="userid")
+    private String phonenumber;
     private String userid;
     private String username;
 
-    private String phonenumber;
+
     private String password;
 
     public User() {

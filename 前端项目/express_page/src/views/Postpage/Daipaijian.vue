@@ -96,8 +96,11 @@
 </template>
 
 <script>
+import store from "../../store";
+
 export default {
   name: "Putsearchstatic",
+  store:store,
   data() {
     return {
       expressinformation:[]
@@ -115,7 +118,7 @@ export default {
       const _this=this;
       axios.get("http://localhost:8081/express/findall").then(function (response) {
         console.log(response);
-        _this.expressinformation=response.data;
+        _this.expressinformation=response.data.data;
       })
           .catch(function (error) {
             console.log(error);

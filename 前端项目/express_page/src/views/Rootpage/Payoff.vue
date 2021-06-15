@@ -5,8 +5,11 @@
 </template>
 
 <script>
+import store from "../../store";
+
 export default {
-  name: "payoff"
+  name: "payoff",
+  store:store,
 }
 </script>
 

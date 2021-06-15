@@ -3,6 +3,7 @@
 <!--    <h1>我寄出的</h1>-->
 <!--    <h2>根据手机号码查询数据库快递信息表中的 寄件人手机号码 和当前登录用户手机号码相匹配的订单</h2>-->
 <!--    <a href="http://localhost:8081/express/findall"> 后台快递数据</a>-->
+    <h1>我寄出的</h1>
     <el-table
         :data="expressinformation"
         v-loading="loading"
@@ -74,20 +75,23 @@
       </el-table-column>
 
     </el-table>
-    <el-pagination
-        style="text-align:center"
-        background
-        layout="prev, pager, next"
-        page-size="6"
-        :total="10">
-    </el-pagination>
+<!--    <el-pagination-->
+<!--        style="text-align:center"-->
+<!--        background-->
+<!--        layout="prev, pager, next"-->
+<!--        page-size="6"-->
+<!--        :total="10">-->
+<!--    </el-pagination>-->
     <el-button  type="primary" @click='refresh()'>刷新</el-button>
   </div>
 </template>
 
 <script>
+import store from "../../store";
+
 export default {
   name: "Putsearchstatic",
+  store:store,
   data() {
     return {
       expressinformation:[]
@@ -95,16 +99,24 @@ export default {
   },
   created() {
     const _this=this;
-    axios.get("http://localhost:8081/express/findall").then(function (response) {
+    axios.post(this.$store.state.ip+"/express/sendphone",{
+      to_send_phone:_this.$store.state.userphone
+    }).then(function (response) {
       console.log(response);
       _this.expressinformation=response.data;
     })
+        .catch(function (error) {
+          console.log(error);
+        });
   },
   methods:{
     refresh(){
 
+      console.log(this.$store.state.userphone)
       const _this=this;
-      axios.get("http://localhost:8081/express/findall").then(function (response) {
+      axios.post(this.$store.state.ip+"/express/sendphone",{
+        to_send_phone:_this.$store.state.userphone
+      }).then(function (response) {
         console.log(response);
         _this.expressinformation=response.data;
       })

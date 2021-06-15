@@ -21,7 +21,7 @@
 
           <template slot="title"><i class="el-icon-message"></i>账号信息</template>
 
-          <el-menu-item index="/home">回到首页</el-menu-item>
+          <el-menu-item index="/home">修改账号信息（开发中）</el-menu-item>
 
 
         </el-submenu>
@@ -36,7 +36,9 @@
             <el-dropdown-item>
               <router-link to="/">首页</router-link>
             </el-dropdown-item>
-            <el-dropdown-item>退出账号</el-dropdown-item>
+            <el-dropdown-item>
+              <router-link to="/">退出账号</router-link>
+            </el-dropdown-item>
             <el-dropdown-item>删除</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>

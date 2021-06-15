@@ -4,8 +4,12 @@
 </template>
 
 <script>
+import store from "../../store";
+
 export default {
-  name: "Datastatistics"
+  name: "Datastatistics",
+  store:store,
+
 }
 </script>
 

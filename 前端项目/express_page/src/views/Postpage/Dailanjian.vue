@@ -96,8 +96,11 @@
 </template>
 
 <script>
+import store from "../../store";
+
 export default {
   name: "Putsearchstatic",
+  store:store,
   data() {
     return {
       expressinformation:[]
@@ -107,7 +110,7 @@ export default {
     const _this=this;
     axios.get("http://localhost:8081/express/findall").then(function (response) {
       console.log(response);
-      _this.expressinformation=response.data;
+      _this.expressinformation=response.data.data;
     })
   },
   methods:{
@@ -115,7 +118,7 @@ export default {
       const _this=this;
       axios.get("http://localhost:8081/express/findall").then(function (response) {
         console.log(response);
-        _this.expressinformation=response.data;
+        _this.expressinformation=response.data.data;
       })
           .catch(function (error) {
             console.log(error);
@@ -123,7 +126,20 @@ export default {
     },
     handleDelete(index, row) {
       console.log(index, row);
-      alert("揽件成功")
+      console.log(row.express_number);
+      let _this = this;
+      axios.post("http://localhost:8081/express/updata",{
+          "express_number":row.express_number
+
+      }).then(function (response) {
+        console.log(response);
+        _this.refresh()
+        alert("揽件成功")
+      })
+          .catch(function (error) {
+            console.log(error);
+          });
+
     }
 
 

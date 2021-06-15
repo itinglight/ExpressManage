@@ -7,7 +7,7 @@
         <el-radio class="radio" v-model="radio1" label="1" border>普通用户</el-radio>
         <el-radio class="radio" v-model="radio1" label="2" border>驿站管理</el-radio>
         <el-radio class="radio" v-model="radio1" label="3" border>超级管理</el-radio>
-        <div style=" width: 220px; margin: auto" > <el-input  placeholder="请输入账号" suffix-icon="el-icon-user-solid" v-model="username"></el-input></div>
+        <div style=" width: 220px; margin: auto" > <el-input  placeholder="请输入账号/手机号码" suffix-icon="el-icon-user-solid" v-model="userphone"></el-input></div>
         <div style=" width: 220px; margin: auto" > <el-input placeholder="请输入密码" show-password v-model="password"></el-input></div>
 
 
@@ -20,28 +20,16 @@
 
     </div>
 
-
-
-<!--    <div>-->
-<!--      <a href="http://localhost:8080/user">User用户登录成功进入的页面</a>-->
-<!--      <br>-->
-<!--      <a href="http://localhost:8080/Post">Post用户登录成功进入的页面</a>-->
-<!--      <br>-->
-<!--      <a href="http://localhost:8080/root">root用户登录成功进入的页面</a>-->
-<!--    </div>-->
-
-
-
-
-
-
   </div>
 </template>
 <script>
+import store from "../store";
+
 export default {
+  store:store,
   data(){
     return {
-      username:'',
+      userphone:'',
       password:'',
       radio1: '1',
 
@@ -52,24 +40,43 @@ export default {
     commit(){
       let loginstatic=false;
       let _this=this;
+      console.log(_this.$store.state.username)
+      console.log(_this.$store.state.userphone)
+
+
+      console.log(_this.$store.state.userphone)
+      console.log(_this.$store.state.username)
       if(this.radio1==1){
 
-        axios.post('http://localhost:8081/user/login', {
-            phonenumber:this.username,
+        axios.post(this.$store.state.ip+'/user/login', {
+            phonenumber:this.userphone,
             password:this.password
 
         }).then(function (response) {
-              console.log(response);
-              console.log(response.data);
+              // console.log(response);
+              // console.log(response.data);
+
+
               if(response.data=="success"){
+
+
+                _this.$store.commit('updates',{
+                  username: _this.password,
+                  userphone:_this.userphone,
+                })
+                console.log(_this.$store.state.userphone)
+
                 _this.$message({
                   message: '登录成功',
                   type: 'success'
                 });
+
+
                 // alert("登录成功");
                 _this.$router.push('/user')
 
               }else{
+
                 _this.$message({
                   message: '请检查账号或密码是否正确',
                   type: 'warning'
@@ -77,6 +84,7 @@ export default {
               }
 
             }).catch(function (error) {
+
               console.log(error);
             })
 
@@ -84,6 +92,24 @@ export default {
 
 
       }else if(this.radio1==2){//驿站管理
+    //     if(response.data=="success"){
+    //       _this.$message({
+    //         message: '登录成功',
+    //         type: 'success'
+    //       });
+    //       // alert("登录成功");
+    //       _this.$router.push('/user')
+    //
+    //     }else{
+    //       _this.$message({
+    //         message: '请检查账号或密码是否正确',
+    //         type: 'warning'
+    //       });
+    //     }
+    //
+    //   }).catch(function (error) {
+    //   console.log(error);
+    // })
 
         this.$message({
           message: '登录成功',

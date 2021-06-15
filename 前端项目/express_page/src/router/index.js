@@ -19,6 +19,8 @@ import RootAisdepage from "../views/Rootpage/RootAisdepage";
 import Settingprice from "../views/Rootpage/Settingprice";
 import Managepostpeople from "../views/Rootpage/Managepostpeople";
 import Payoff from "../views/Rootpage/Payoff"
+import Allexpress from "../views/Rootpage/Allexpress";
+import Manageuser from "../views/Rootpage/Manageuser";
 Vue.use(VueRouter)
 
 const routes = [
@@ -95,18 +97,28 @@ const routes = [
     children:[
       {
         path:'settingprice',
-        name:'Settingprice',
+        name:'设置快递价格',
         component: Settingprice
       },
       {
-        path:'managepostpeople',
-        name:'人员管理',
+        path:'manageuser',
+        name:'用户人员管理',
+        component: Manageuser
+      },
+      {
+        path:'managepost',
+        name:'驿站人员管理',
         component: Managepostpeople
       },
       {
         path:'payoff',
         name:'发放工资',
         component: Payoff
+      },
+      {
+        path:'allexpress',
+        name:'所有包裹',
+        component: Allexpress
       }
     ]
   }

@@ -5,8 +5,11 @@
 </template>
 <script>
 
+import store from "./store";
+
 export default {
   name: 'app',
+  store:store,
   components: {
   }
 }
@@ -15,6 +18,8 @@ export default {
 <style scoped>
 #app {
   /*background-image:url("");*/
+  margin: 0px;
+  padding: 0px;
 
 }
 </style>

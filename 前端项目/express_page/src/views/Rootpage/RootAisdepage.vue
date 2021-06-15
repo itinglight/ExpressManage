@@ -10,10 +10,12 @@
 
         </el-submenu>
         <el-submenu index="2">
-          <template slot="title"><i class="el-icon-message"></i>人员管理</template>
+          <template slot="title"><i class="el-icon-message"></i>仓库管理</template>
+          <el-menu-item index="/root/manageuser">客户人员管理</el-menu-item>
+          <el-menu-item index="/root/managepost">驿站人员管理</el-menu-item>
 
-          <el-menu-item index="/root/managepostpeople">驿站人员管理</el-menu-item>
-          <el-menu-item index="/root">发放工资</el-menu-item>
+
+          <el-menu-item index="/root/allexpress">包裹管理</el-menu-item>
 
 
         </el-submenu>
@@ -21,7 +23,7 @@
 
           <template slot="title"><i class="el-icon-message"></i>账号信息</template>
 
-          <el-menu-item index="/home">回到首页</el-menu-item>
+          <el-menu-item index="/root/allexpress">所有包裹</el-menu-item>
 
 
         </el-submenu>
@@ -36,13 +38,14 @@
             <el-dropdown-item>
               <router-link to="/">首页</router-link>
             </el-dropdown-item>
-            <el-dropdown-item>退出账号</el-dropdown-item>
-            <el-dropdown-item>删除</el-dropdown-item>
+            <el-dropdown-item>
+              <router-link to="/">退出账号</router-link>
+            </el-dropdown-item>
+
           </el-dropdown-menu>
         </el-dropdown>
         <span>菜鸟物流信息管理系统</span>
       </el-header>
-
       <el-main>
         <router-view></router-view>
       </el-main>

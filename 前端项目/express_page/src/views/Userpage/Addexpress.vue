@@ -63,8 +63,10 @@
 
 <script>
 // let pcas= require('../utils/pcas/pcas-code.json')
-export default {
+import store from "../../store";
 
+export default {
+  store:store,
   data() {
     return {
 
@@ -162,14 +164,7 @@ export default {
       var str=JSON.stringify(expressinformation);
       console.log(str);
       console.log(expressinformation);
-      // axios.post(' http://localhost:8081/addexpress',this.ruleForm).then(function (response) {
-      //       console.log(response);
-      //     })
-      //     .catch(function (error) {
-      //       console.log(error);
-      //     });
-
-      axios.post('http://localhost:8081/addexpress', {
+      axios.post(this.$store.state.ip+'/addexpress', {
         //快递单号
         express_number:express_number,
         //寄件人信息

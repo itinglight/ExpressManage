@@ -12,9 +12,18 @@
 
 
 <style scoped>
-.home{
+#cards{
+  /*width: 1920px;*/
+  /*height:1080px;*/
   font-size: 39px;
-  color: #3d3d3d;
+  /*!*background:url("/public/th.jpeg");*!*/
+  /*!*background-image: url("/public/th.jpeg");*!*/
+  /*!*background:#F00;*!*/
+  margin: 0;
+}
+.buttons{
+  margin: 20px;
+
 }
 h1:hover{
   color: #343434;
