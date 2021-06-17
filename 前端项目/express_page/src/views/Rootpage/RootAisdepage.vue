@@ -15,7 +15,7 @@
           <el-menu-item index="/root/managepost">驿站人员管理</el-menu-item>
 
 
-          <el-menu-item index="/root/allexpress">包裹管理</el-menu-item>
+          <el-menu-item index="/root/allexpress">包裹删除</el-menu-item>
 
 
         </el-submenu>

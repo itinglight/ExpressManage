@@ -100,16 +100,16 @@
           }
         },
         created() {
-          const _this=this;
-          axios.post(this.$store.state.ip+"/express/receivephone",{
-            to_send_phone:_this.$store.state.userphone
-          }).then(function (response) {
-            console.log(response);
-            _this.expressinformation=response.data;
-          })
-              .catch(function (error) {
-                console.log(error);
-              });
+          // const _this=this;
+          // axios.post(this.$store.state.ip+"/express/receivephone",{
+          //   to_send_phone:_this.$store.state.userphone
+          // }).then(function (response) {
+          //   console.log(response);
+          //   _this.expressinformation=response.data;
+          // })
+          //     .catch(function (error) {
+          //       console.log(error);
+          //     });
 
         },
         methods:{

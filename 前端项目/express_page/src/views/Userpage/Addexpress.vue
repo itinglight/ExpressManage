@@ -74,7 +74,7 @@ export default {
         //寄件人信息
         to_send_name: '',
         to_send_phone:'',
-        options:[{"code":"43","name":"湖南省","children":[{"code":"4304","name":"衡阳市","children":[{"code":"430408","name":"蒸湘区","children":[{"code":"430408100","name":"呆鹰岭镇"}]}]}]}],
+        options:[{"code":"43","name":"湖南省","children":[{"code":"4304","name":"衡阳市","children":[{"code":"430408","name":"蒸湘区","children":[{"code":"430408100","name":"呆鹰岭镇"}]}]}]},{"code":"4312","name":"怀化市","children":[{"code":"431228","name":"⁮芷江侗族自治县","children":[{"code":"431228102","name":"新店坪镇"}]}]},{"code":"4311","name":"永州市","chldren":[{"code":"431102","name":"零陵区","children":[{"code":"431102001","name":"朝阳街道"}]}]}],
         to_send_address:[],
         to_send_detailed_address:'',
         //收件人信息

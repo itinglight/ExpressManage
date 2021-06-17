@@ -9,8 +9,8 @@ const store = new Vuex.Store({
     username:'itinglight',
     userphone:'6666',
     postaddress:'呆鹰岭镇',
-    ip:'http://192.168.1.185:8081',
-    // ip:'http://localhost:8081'
+    // ip:'http://192.168.1.185:8081',
+    ip:'http://localhost:8081'
   },
   mutations: {
     updates (state, payload) {
