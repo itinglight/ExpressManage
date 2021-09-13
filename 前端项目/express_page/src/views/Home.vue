@@ -16,10 +16,8 @@
   /*width: 1920px;*/
   /*height:1080px;*/
   font-size: 39px;
-  /*!*background:url("/public/th.jpeg");*!*/
-  /*!*background-image: url("/public/th.jpeg");*!*/
-  /*!*background:#F00;*!*/
-  margin: 0;
+  margin: 200px auto;
+  width: 800px;
 }
 .buttons{
   margin: 20px;

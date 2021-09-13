@@ -71,17 +71,7 @@
           prop="express_static"
           label="物流信息">
       </el-table-column>
-      <el-table-column label="操作">
-        <template slot-scope="scope">
-          <!--          <el-button-->
-          <!--              size="mini"-->
-          <!--              @click="handleEdit(scope.$index, scope.row)">确认揽件</el-button>-->
-          <el-button
-              size="mini"
-              type="danger"
-              @click="handleDelete(scope.$index, scope.row)">删除包裹</el-button>
-        </template>
-      </el-table-column>
+
 
     </el-table>
     <el-pagination

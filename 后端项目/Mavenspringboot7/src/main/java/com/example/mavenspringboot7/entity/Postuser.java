@@ -58,4 +58,12 @@ public class Postuser {
     public void setPostaddress(String postaddress) {
         this.postaddress = postaddress;
     }
+
+
+
+
+
+
+
+
 }

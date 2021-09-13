@@ -21,6 +21,7 @@ import Managepostpeople from "../views/Rootpage/Managepostpeople";
 import Payoff from "../views/Rootpage/Payoff"
 import Allexpress from "../views/Rootpage/Allexpress";
 import Manageuser from "../views/Rootpage/Manageuser";
+import DeleteExpress from "../views/Rootpage/DeleteExpress";
 Vue.use(VueRouter)
 
 const routes = [
@@ -119,6 +120,11 @@ const routes = [
         path:'allexpress',
         name:'所有包裹',
         component: Allexpress
+      },
+      {
+        path:"deleteexpress",
+        name:"删除包裹",
+        component: DeleteExpress
       }
     ]
   }

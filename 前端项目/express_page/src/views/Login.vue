@@ -11,7 +11,7 @@
         <div style=" width: 220px; margin: auto" > <el-input placeholder="请输入密码" show-password v-model="password"></el-input></div>
 
 
-      <div style="margin:30px auto" >
+        <div style="margin:30px auto" >
         <el-button  type="primary" @click="commit()">登录</el-button>
         <router-link class="back_button" to="/"><el-button type="primary">回到首页</el-button></router-link>
 

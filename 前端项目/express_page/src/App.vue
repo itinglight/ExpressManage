@@ -16,10 +16,17 @@ export default {
 </script>
 
 <style scoped>
+
 #app {
+
   /*background-image:url("");*/
   margin: 0px;
   padding: 0px;
+  /*background: linear-gradient(to right,red,blue);*/
+  background: url("../public/th.jpeg");
+  position: fixed;
+  width: 100%;
+  height: 100%;
 
 }
 </style>
